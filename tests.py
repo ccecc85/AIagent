@@ -1,20 +1,28 @@
-from functions.get_files_info import get_files_info
-from functions.get_file_content import get_files_content
-from functions.write_file import write_file
+from functions.run_python import run_python_file
 
 def test():
-    result = write_file("calculator", "lorem.txt", "wait, this isn't lorem ipsum")
+    result = run_python_file("calculator", "main.py")
     print("Result for 'lorem.txt' file:")
     print(result)
     print("")
 
-    result = write_file("calculator", "pkg/morelorem.txt", "lorem ipsum dolor sit amet")
-    print("Result for 'pkg/morelorem.txt' file:")
+    result = run_python_file("calculator", "main.py", ["3 + 5"] )
+    print("Result for 'lorem.txt' file:")
     print(result)
     print("")
 
-    result = write_file("calculator", "/tmp/test.txt", "This shuold not be allowed.")
-    print("Result for '/tmp/test.txt' file:")
+    result = run_python_file("calculator", "tests.py")
+    print("Result for 'tests.py' file:")
+    print(result)
+    print("")
+
+    result = run_python_file("calculator", "../main.py")
+    print("Result for '../main.py' file:")
+    print(result)
+    print("")
+
+    result = run_python_file("calculator", "nonexistent.py")
+    print("Result for 'nonexistent.py' file:")
     print(result)
     print("")
 
